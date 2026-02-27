@@ -1,10 +1,22 @@
 {
   "name": "my-gene",
-  "version": "0.1.0",
+  "version": "1.0.0-rebirth",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "lint": "eslint src/",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "hono": "^4.3.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240529.0",
+    "wrangler": "^3.57.0",
+    "typescript": "^5.4.5",
+    "eslint": "^9.4.0",
+    "vitest": "^1.6.0"
   }
 }
