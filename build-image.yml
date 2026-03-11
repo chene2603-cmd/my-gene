@@ -1,0 +1,14 @@
+name: 打包EMQX离线镜像
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          docker pull emqx/edge:5.7-arm64
+          docker save emqx/edge:5.7-arm64 -o emqx.tar
+          gzip emqx.tar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: emqx-offline
+          path: emqx.tar.gz
